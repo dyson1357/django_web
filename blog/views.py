@@ -1,7 +1,16 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from .models import Post
 
 
+# CBV 형태 코드
+class PostList(ListView):
+    model = Post
+    ordering = '-pk'
+
+
+# FBV 형태 코드
+"""
 def index(request):
     posts = Post.objects.all().order_by('-pk')
 
@@ -12,6 +21,7 @@ def index(request):
             'posts': posts,
         }
     )
+"""
 
 
 def single_post_page(request, pk):
